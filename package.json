@@ -1,0 +1,34 @@
+{
+  "name": "binary-heap-ds",
+  "version": "1.0.0",
+  "description": "Binary Heap implementation in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "_mocha",
+    "coverage": "nyc --reporter html --reporter text npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kumar-gaurav-mishra/binary-heap.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "DataStructure",
+    "binary-heap",
+    "binary heap",
+    "js",
+    "ds",
+    "bh"
+  ],
+  "author": "Kumar Gaurav Mishra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kumar-gaurav-mishra/binary-heap/issues"
+  },
+  "homepage": "https://github.com/kumar-gaurav-mishra/binary-heap#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
+    "nyc": "^14.1.1"
+  }
+}
