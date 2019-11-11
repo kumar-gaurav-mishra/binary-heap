@@ -21,63 +21,40 @@ class BinaryHeap {
     return this;
   }
   extractMax() {
-    const length = this.value.length;
-    if (length === 0) return undefined;
+    if (this.value.length === 0) return undefined;
     let max = this.value[0];
-    let index = 0;
-    // this.value[0] = this.value[length - 1];
-    // this.value.pop();
-    // let index = 0;
-    // while (true) {
-    //   let left = 2 * index + 1;
-    //   let right = 2 * index + 2;
-    //   if (
-    //     length > left &&
-    //     this.value.right > right &&
-    //     this.value[left] &&
-    //     this.value[right] &&
-    //     this.value[index] > this.value[left] &&
-    //     this.value[index] > this.value[right]
-    //   ) {
-    //     let temp = this.value[index];
-    //     if (this.value[left] > this.value[right]) {
-    //       this.value[index] = this.value[left];
-    //       this.value[left] = temp;
-    //     } else {
-    //       this.value[index] = this.value[right];
-    //       this.value[right] = temp;
-    //     }
-    //   } else if (left < length && this.value[left] > this.value[index]) {
-    //     if (this.value[left] > this.value[right]) {
-    //       let temp = this.value[index];
-    //       this.value[index] = this.value[left];
-    //       this.value[left] = temp;
-    //     }
-    //   } else if (right < length && this.value[right] > this.value[index]) {
-    //     let temp = this.value[index];
-    //     this.value[index] = this.value[left];
-    //     this.value[left] = temp;
-    //   } else {
-    //     break;
-    //   }
-    //   ++index;
-    // }
-    while (true) {
-      let swap = null;
-      let currentValue = this.value[index];
-      let leftIdx = 2 * index + 1;
-      let rightIdx = 2 * index + 2;
-      let leftChild, rightChild;
-      if (leftIdx < length) {
-        leftChild = this.value[leftChild];
+    if (this.value.length - 1 > 0) {
+      this.value[0] = this.value.pop();
+      const length = this.value.length;
+      let index = 0;
+      let element = this.value[0];
+      while (true) {
+        let swap = null;
+        let leftIdx = 2 * index + 1;
+        let rightIdx = 2 * index + 2;
+        let leftChild, rightChild;
+        if (leftIdx < length) {
+          leftChild = this.value[leftIdx];
+          if (leftChild > element) {
+            swap = leftIdx;
+          }
+        }
+        if (rightIdx < length) {
+          rightChild = this.value[rightIdx];
+          if ((swap === null && rightChild > element) || (swap !== null && rightChild > leftChild)) {
+            swap = rightIdx;
+          }
+        }
+        if (swap === null) break;
+        this.value[index] = this.value[swap];
+        this.value[swap] = element;
+        index = swap;
       }
+    } else {
+      this.value.pop();
     }
+
     return max;
   }
 }
-let heap = new BinaryHeap();
-[1, 5, 8, 500, 60, 600, 200, 1000, 15, 20].forEach(val => heap.insert(val));
-console.log(heap.value);
-console.log(heap.extractMax());
-console.log(heap.value);
 module.exports = BinaryHeap;
