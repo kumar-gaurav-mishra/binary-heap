@@ -4,6 +4,7 @@ class BinaryHeap {
     this.value = [];
   }
   insert(element) {
+    if (!element) return undefined;
     this.value.push(element);
     if (this.value.length <= 1) return this;
     let index = this.value.length - 1;
@@ -18,7 +19,6 @@ class BinaryHeap {
         return this;
       }
     }
-    return this;
   }
   extractMax() {
     if (this.value.length === 0) return undefined;
@@ -53,7 +53,6 @@ class BinaryHeap {
     } else {
       this.value.pop();
     }
-
     return max;
   }
 }
